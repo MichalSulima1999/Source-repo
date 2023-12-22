@@ -3,9 +3,6 @@ name: Build and Push Docker Image
 on:
   workflow_dispatch:  # Uruchomienie ręczne
 
-permissions:
-  contents: write
-
 jobs:
   dockerCI:
     runs-on: ubuntu-latest
@@ -49,6 +46,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: MichalSulima1999/config-repo
+          token: ${{ secrets.PAT }}
 
       - name: Configure Git
         run: |
