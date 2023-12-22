@@ -47,6 +47,11 @@ jobs:
         with:
           repository: MichalSulima1999/config-repo
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "michal.sulima1999@gmail.com"
+          git config --global user.name "MichalSulima1999"
+
       - name: Update Config Repo
         run: |
           sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
