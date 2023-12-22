@@ -31,8 +31,8 @@ jobs:
           platforms: linux/amd64,linux/arm64  # Wybrane architektury
           push: true
           tags: |
-            latest
-            v1.0.${{ github.run_number }}
+            michael1099/fullstack_zad2:latest
+            michael1099/fullstack_zad2:v1.0.${{ github.run_number }}
         env:
           DOCKER_BUILDKIT: 1
           ACTIONS_STEP_DEBUG: true
@@ -65,8 +65,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
+          git config --global user.email "michal.sulima1999@gmail.com"
+          git config --global user.name "MichalSulima1999"
 
       - name: Update Kubernetes Manifests
         run: |
