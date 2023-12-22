@@ -43,7 +43,7 @@ jobs:
 
     steps:
       - name: Checkout Config Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: MichalSulima1999/config-repo
 
@@ -57,7 +57,7 @@ jobs:
           sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
           git add deployment.yaml
           git commit -m "Update image version"
-          git push origin main
+          git push
 
   kubernetesCI:
     runs-on: ubuntu-latest
@@ -78,4 +78,4 @@ jobs:
           sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
           git add deployment.yaml
           git commit -m "Update image reference in Kubernetes manifests"
-          git push origin main
+          git push
