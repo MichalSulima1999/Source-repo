@@ -3,6 +3,9 @@ name: Build and Push Docker Image
 on:
   workflow_dispatch:  # Uruchomienie ręczne
 
+permissions:
+  contents: write
+
 jobs:
   dockerCI:
     runs-on: ubuntu-latest
