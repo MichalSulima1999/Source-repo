@@ -33,6 +33,10 @@ jobs:
           tags: |
             latest
             v1.0.${{ github.run_number }}
+        env:
+          DOCKER_BUILDKIT: 1
+          ACTIONS_STEP_DEBUG: true
+
 
   updateConfigRepo:
     runs-on: ubuntu-latest
