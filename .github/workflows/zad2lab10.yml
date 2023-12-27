@@ -32,7 +32,7 @@ jobs:
           push: true
           tags: |
             michael1099/fullstack_zad2:latest
-            michael1099/fullstack_zad2:v1.0.${{ github.run_number }}
+            michael1099/fullstack_zad2:v1.0.$(Build.BuildId)
         env:
           DOCKER_BUILDKIT: 1
           ACTIONS_STEP_DEBUG: true
@@ -55,7 +55,7 @@ jobs:
 
       - name: Update Config Repo
         run: |
-          sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
+          sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.$(Build.BuildId)|' deployment.yaml
           git add deployment.yaml
           git commit -m "Update image version"
           git push
@@ -78,7 +78,7 @@ jobs:
 
       - name: Update Kubernetes Manifests
         run: |
-          sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
+          sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.$(Build.BuildId)|' deployment.yaml
           git add deployment.yaml
           git commit -m "Update image reference in Kubernetes manifests"
           git push
