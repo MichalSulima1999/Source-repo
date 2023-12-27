@@ -38,7 +38,7 @@ jobs:
           ACTIONS_STEP_DEBUG: true
 
 
-  updateConfigRepo:
+  kubernetesCI:
     runs-on: ubuntu-latest
 
     steps:
@@ -58,27 +58,4 @@ jobs:
           sed -i 's|image: michael1099/fullstack_zad2:v1.*|image: michael1099/fullstack_zad2:v1\.0\.${{ github.run_number }}|' deployment.yaml
           git add deployment.yaml
           git commit -m "Update image version"
-          git push
-
-  kubernetesCI:
-    runs-on: ubuntu-latest
-    needs: updateConfigRepo
-
-    steps:
-      - name: Checkout Config Repository
-        uses: actions/checkout@v2
-        with:
-          repository: MichalSulima1999/config-repo
-          token: ${{ secrets.PAT }}
-
-      - name: Configure Git
-        run: |
-          git config --global user.email "michal.sulima1999@gmail.com"
-          git config --global user.name "MichalSulima1999"
-
-      - name: Update Kubernetes Manifests
-        run: |
-          sed -i 's|image: michael1099/fullstack_zad2:v1|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
-          git add deployment.yaml
-          git commit -m "Update image reference in Kubernetes manifests"
           git push
