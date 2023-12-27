@@ -55,7 +55,7 @@ jobs:
 
       - name: Update Config Repo
         run: |
-          sed -i 's|^.*image: michael1099/fullstack_zad2:v1.0.*$|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
+          sed -i 's|image: michael1099/fullstack_zad2:v1.0.*$|image: michael1099/fullstack_zad2:v1.0.${{ github.run_number }}|' deployment.yaml
           git add deployment.yaml
           git commit -m "Update image version"
           git push
