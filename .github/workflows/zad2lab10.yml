@@ -57,5 +57,5 @@ jobs:
         run: |
           sed -i 's|image: michael1099/fullstack_zad2:v1.*|image: michael1099/fullstack_zad2:v1\.0\.${{ github.run_number }}|' deployment.yaml
           git add deployment.yaml
-          git commit -m "Update image version"
+          git commit -m "Update image version v1.0.${{ github.run_number }}"
           git push
